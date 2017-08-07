@@ -6,12 +6,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * Created by sarva on 07-08-2017.
+ * DB handler
  */
 
 public class EmployeeDBHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "employees.db";
     private static final int DATABASE_VERSION = 1;
-
     public static final String TABLE_EMPLOYEES = "employees";
     public static final String COLUMN_ID = "empId";
     public static final String COLUMN_FIRST_NAME = "firstname";
