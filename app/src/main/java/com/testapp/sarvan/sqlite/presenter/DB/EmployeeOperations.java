@@ -68,7 +68,6 @@ public class EmployeeOperations {
             }
             if (cursor != null) {
 
-                //    Employee e = new Employee(Long.parseLong(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
                 return new Employee(Long.parseLong(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
                 //return e;
             }
