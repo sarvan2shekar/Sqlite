@@ -19,6 +19,9 @@ public class Employee {
         this.dept = dept;
     }
 
+    public Employee() {
+    }
+
     private String firstname;
     private String lastname;
     private String gender;
