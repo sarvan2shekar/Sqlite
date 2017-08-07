@@ -18,10 +18,10 @@ import java.util.List;
  */
 
 public class EmployeeOperations {
-    public static final String LOGTAG = "EMP_MNGMNT_SYS";
+    private static final String LOGTAG = "EMP_MNGMNT_SYS";
 
-    SQLiteOpenHelper dbhandler;
-    SQLiteDatabase database;
+    private SQLiteOpenHelper dbhandler;
+    private SQLiteDatabase database;
 
     public EmployeeOperations(Context context) {
         dbhandler = new EmployeeDBHandler(context);
@@ -60,39 +60,63 @@ public class EmployeeOperations {
 
     // Getting single Employee
     public Employee getEmployee(long id) {
-        Cursor cursor = database.query(EmployeeDBHandler.TABLE_EMPLOYEES, allColumns, EmployeeDBHandler.COLUMN_ID + "=?", new String[]{String.valueOf(id)}, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
+        Cursor cursor = null;
+        try {
 
-        Employee e = new Employee(Long.parseLong(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
-        // return Employee
-        return e;
+            cursor = database.query(EmployeeDBHandler.TABLE_EMPLOYEES, allColumns, EmployeeDBHandler.COLUMN_ID + "=?", new String[]{String.valueOf(id)}, null, null, null, null);
+            if (cursor != null) {
+                cursor.moveToFirst();
+            }
+            if (cursor != null) {
+
+                return new Employee(Long.parseLong(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
+                //return e;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+
+                cursor.close();
+            }
+        }
+
+        return null;
     }
 
     public List<Employee> getAllEmployees() {
-        Cursor cursor = database.query(EmployeeDBHandler.TABLE_EMPLOYEES, allColumns,
-                null, null, null, null, null);
+        Cursor cursor = null;
         List<Employee> employees = new ArrayList<>();
-        if (cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                Employee employee = new Employee();
-                employee.setEmpId(cursor.getLong(cursor.getColumnIndex(
-                        EmployeeDBHandler.COLUMN_ID)));
-                employee.setFirstname(cursor.getString(cursor.getColumnIndex(
-                        EmployeeDBHandler.COLUMN_FIRST_NAME)));
-                employee.setLastname(cursor.getString(cursor.getColumnIndex(
-                        EmployeeDBHandler.COLUMN_LAST_NAME)));
-                employee.setGender(cursor.getString(cursor.getColumnIndex(
-                        EmployeeDBHandler.COLUMN_GENDER)));
-                employee.setHiredate(cursor.getString(cursor.getColumnIndex(
-                        EmployeeDBHandler.COLUMN_HIRE_DATE)));
-                employee.setDept(cursor.getString(cursor.getColumnIndex(
-                        EmployeeDBHandler.COLUMN_DEPT)));
-                employees.add(employee);
+        try {
+            cursor = database.query(EmployeeDBHandler.TABLE_EMPLOYEES, allColumns,
+                    null, null, null, null, null);
+
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Employee employee = new Employee();
+                    employee.setEmpId(cursor.getLong(cursor.getColumnIndex(
+                            EmployeeDBHandler.COLUMN_ID)));
+                    employee.setFirstname(cursor.getString(cursor.getColumnIndex(
+                            EmployeeDBHandler.COLUMN_FIRST_NAME)));
+                    employee.setLastname(cursor.getString(cursor.getColumnIndex(
+                            EmployeeDBHandler.COLUMN_LAST_NAME)));
+                    employee.setGender(cursor.getString(cursor.getColumnIndex(
+                            EmployeeDBHandler.COLUMN_GENDER)));
+                    employee.setHiredate(cursor.getString(cursor.getColumnIndex(
+                            EmployeeDBHandler.COLUMN_HIRE_DATE)));
+                    employee.setDept(cursor.getString(cursor.getColumnIndex(
+                            EmployeeDBHandler.COLUMN_DEPT)));
+                    employees.add(employee);
+                }
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
             }
         }
         // return All Employees
         return employees;
+
     }
 
     // Updating Employee
