@@ -1,7 +1,9 @@
-package com.testapp.sarvan.sqlite;
+package com.testapp.sarvan.sqlite.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.testapp.sarvan.sqlite.R;
 
 public class MainActivity extends AppCompatActivity {
 
