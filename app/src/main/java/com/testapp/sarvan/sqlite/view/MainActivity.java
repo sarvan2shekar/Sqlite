@@ -18,10 +18,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String EXTRA_ADD_UPDATE = "com.testapp.sarvan.sqlite.add_update";
     private EmployeeOperations employeeOps;
 
-    private enum ButtonVal {
-        add, update, remove, viewall
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,13 +69,23 @@ public class MainActivity extends AppCompatActivity {
         final EditText empId = getEmpIdView.findViewById(R.id.empId);
         ab.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                Intent i = new Intent(MainActivity.this, AddUpdateEmployee.class);
-                i.putExtra(EXTRA_ADD_UPDATE, "Update");
-                i.putExtra(EXTRA_EMP_ID, Long.parseLong(empId.getText().toString()));
-                startActivity(i);
+                if (empId != null && empId.getText() != null &&
+                        !empId.getText().toString().trim().equalsIgnoreCase("")) {
+                    Long val = null;
+                    try {
+                        val = Long.parseLong(empId.getText().toString());
+                    } catch (NumberFormatException nfe) {
+                        val = null;
+                    }
+                    if (val != null) {
+                        Intent i = new Intent(MainActivity.this, AddUpdateEmployee.class);
+                        i.putExtra(EXTRA_ADD_UPDATE, "Update");
+                        i.putExtra(EXTRA_EMP_ID, val);
+                        startActivity(i);
+                    }
+                }
             }
-        }).create()
-                .show();
+        }).create().show();
     }
 
     private void getEmpIdAndRemoveEmp() {
@@ -91,14 +97,32 @@ public class MainActivity extends AppCompatActivity {
         ab.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int id) {
-                employeeOps.removeEmployee(employeeOps.getEmployee(
-                        Long.parseLong(empId.getText().toString())));
-                Toast t = Toast.makeText(MainActivity.this, "Employee removed successfully!",
-                        Toast.LENGTH_SHORT);
-                t.show();
+                if (empId != null && empId.getText() != null &&
+                        !empId.getText().toString().trim().equalsIgnoreCase("")) {
+                    Long val = null;
+                    try {
+                        val = Long.parseLong(empId.getText().toString());
+                    } catch (NumberFormatException nfe) {
+                        val = null;
+                    }
+                    if (val != null && employeeOps.removeEmployee(employeeOps.getEmployee(val))) {
+                        Toast t = Toast.makeText(MainActivity.this, "Employee removed successfully!",
+                                Toast.LENGTH_SHORT);
+                        t.show();
+                    } else {
+                        Toast t = Toast.makeText(MainActivity.this, "No such record found!",
+                                Toast.LENGTH_SHORT);
+                        t.show();
+                    }
+                }
+
             }
         }).create()
                 .show();
+    }
+
+    private enum ButtonVal {
+        add, update, remove, viewall
     }
 }
 

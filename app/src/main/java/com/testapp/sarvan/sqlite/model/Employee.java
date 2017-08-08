@@ -8,7 +8,11 @@ package com.testapp.sarvan.sqlite.model;
 public class Employee {
 
     private long empId;
-
+    private String firstname = null;
+    private String lastname = null;
+    private String gender = null;
+    private String hiredate = null;
+    private String dept = null;
     public Employee(long empId, String firstname, String lastname,
                     String gender, String hiredate, String dept) {
         this.empId = empId;
@@ -18,15 +22,8 @@ public class Employee {
         this.hiredate = hiredate;
         this.dept = dept;
     }
-
     public Employee() {
     }
-
-    private String firstname;
-    private String lastname;
-    private String gender;
-    private String hiredate;
-    private String dept;
 
     public long getEmpId() {
         return empId;
