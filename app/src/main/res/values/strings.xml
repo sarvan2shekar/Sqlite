@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Sqlite</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_emp">Add Employee</string>
+    <string name="update_emp">Update Employee</string>
+    <string name="remove_emp">Remove Employee</string>
+    <string name="view_all_emp">View all employees</string>-->
+
 </resources>
