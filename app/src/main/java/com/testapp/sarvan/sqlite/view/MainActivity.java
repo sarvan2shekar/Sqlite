@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         View getEmpIdView = li.inflate(R.layout.dialog_emp_get_id, null);
         AlertDialog.Builder ab = new AlertDialog.Builder(this);
         ab.setView(getEmpIdView);
-        final EditText empId = (EditText) getEmpIdView.findViewById(R.id.empId);
+        final EditText empId = getEmpIdView.findViewById(R.id.empId);
         ab.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 if (empId != null && empId.getText() != null &&
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         View empIdView = li.inflate(R.layout.dialog_emp_get_id, null);
         AlertDialog.Builder ab = new AlertDialog.Builder(this);
         ab.setView(empIdView);
-        final EditText empId = (EditText) empIdView.findViewById(R.id.empId);
+        final EditText empId = empIdView.findViewById(R.id.empId);
         ab.setCancelable(false).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int id) {
