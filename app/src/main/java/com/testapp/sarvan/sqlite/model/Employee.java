@@ -23,7 +23,6 @@ public class Employee {
         this.hiredate = hiredate;
         this.dept = dept;
     }
-
     public Employee() {
     }
 
