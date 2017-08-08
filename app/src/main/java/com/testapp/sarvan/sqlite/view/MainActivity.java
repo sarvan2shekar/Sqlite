@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
                     getEmpIdAndRemoveEmp();
                     break;
                 case viewall:
-//                    Intent i = new Intent(MainActivity.this, ViewAllEmployees.class);
-//                    startActivity(i);
+                    Intent intent = new Intent(MainActivity.this, ViewAllEmployees.class);
+                    startActivity(intent);
                     break;
             }
         }
