@@ -19,13 +19,6 @@ import java.util.List;
 
 public class EmployeeOperations {
     private static final String LOGTAG = "EMP_MNGMNT_SYS";
-    private SQLiteOpenHelper dbhandler;
-    private SQLiteDatabase database;
-
-    public EmployeeOperations(Context context) {
-        dbhandler = new EmployeeDBHandler(context);
-    }
-
     private static final String[] allColumns = {
             EmployeeDBHandler.COLUMN_ID,
             EmployeeDBHandler.COLUMN_FIRST_NAME,
@@ -34,6 +27,12 @@ public class EmployeeOperations {
             EmployeeDBHandler.COLUMN_HIRE_DATE,
             EmployeeDBHandler.COLUMN_DEPT
     };
+    private SQLiteOpenHelper dbhandler;
+    private SQLiteDatabase database;
+
+    public EmployeeOperations(Context context) {
+        dbhandler = new EmployeeDBHandler(context);
+    }
 
     public void open() {
         Log.i(LOGTAG, "Database Opened");
@@ -130,8 +129,13 @@ public class EmployeeOperations {
     }
 
     // Deleting Employee
-    public void removeEmployee(Employee employee) {
-        database.delete(EmployeeDBHandler.TABLE_EMPLOYEES,
-                EmployeeDBHandler.COLUMN_ID + "=" + employee.getEmpId(), null);
+    public boolean removeEmployee(Employee employee) {
+        if (employee != null) {
+            database.delete(EmployeeDBHandler.TABLE_EMPLOYEES,
+                    EmployeeDBHandler.COLUMN_ID + "=" + employee.getEmpId(), null);
+            employee = null;
+            return true;
+        }
+        return false;
     }
 }
