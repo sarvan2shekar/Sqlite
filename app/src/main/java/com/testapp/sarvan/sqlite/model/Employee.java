@@ -13,6 +13,7 @@ public class Employee {
     private String gender = null;
     private String hiredate = null;
     private String dept = null;
+
     public Employee(long empId, String firstname, String lastname,
                     String gender, String hiredate, String dept) {
         this.empId = empId;
@@ -22,6 +23,7 @@ public class Employee {
         this.hiredate = hiredate;
         this.dept = dept;
     }
+
     public Employee() {
     }
 
@@ -75,13 +77,11 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "empId=" + getEmpId() +
-                ", firstname='" + getFirstname() + '\'' +
-                ", lastname='" + getLastname() + '\'' +
-                ", gender='" + getGender() + '\'' +
-                ", hiredate='" + getHiredate() + '\'' +
-                ", dept='" + getDept() + '\'' +
-                '}';
+        return "Emp Id:" + getEmpId() + "\n" +
+                "First Name:" + getFirstname() + "\n" +
+                "Last Name:" + getLastname() + "\n" +
+                "Gender:" + getGender() + "\n" +
+                "Hire Date:" + getHiredate() + "\n" +
+                "Dept=" + getDept();
     }
 }

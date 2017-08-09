@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         employeeOps.close();
-
     }
 
     public void onClick(View v) {
