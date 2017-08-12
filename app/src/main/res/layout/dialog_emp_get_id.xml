@@ -9,7 +9,6 @@
         android:id="@+id/enterEmpId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
         android:text="Enter Your Employee Id"
         android:textAlignment="center"
         android:textSize="20sp"
