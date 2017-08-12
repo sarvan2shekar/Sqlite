@@ -9,18 +9,19 @@
         android:id="@+id/enterEmpId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
         android:text="Enter Your Employee Id"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/empId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Employee ID"
         app:layout_constraintLeft_toLeftOf="@+id/enterEmpId"
         app:layout_constraintRight_toRightOf="@+id/enterEmpId"
         app:layout_constraintTop_toBottomOf="@+id/enterEmpId" />
