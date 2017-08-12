@@ -40,19 +40,19 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View v) {
         if (v != null && v.getTag() != null) {
             ButtonVal val = ButtonVal.valueOf(v.getTag().toString());
-            switch (val) {
-                case add:
+            switch (v.getTag().toString()) {
+                case "add":
                     Intent i = new Intent(MainActivity.this, AddUpdateEmployee.class);
                     i.putExtra(EXTRA_ADD_UPDATE, "Add");
                     startActivity(i);
                     break;
-                case update:
+                case "update":
                     getEmpIdAndUpdateEmp();
                     break;
-                case remove:
+                case "remove":
                     getEmpIdAndRemoveEmp();
                     break;
-                case viewall:
+                case "viewall":
                     Intent intent = new Intent(MainActivity.this, ViewAllEmployees.class);
                     startActivity(intent);
                     break;
