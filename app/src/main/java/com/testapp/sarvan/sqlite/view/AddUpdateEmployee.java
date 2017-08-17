@@ -99,7 +99,7 @@ public class AddUpdateEmployee extends AppCompatActivity implements DatePickerFr
                     && newEmployee.getDept() != null && newEmployee.getHiredate() != null && newEmployee.getGender() != null) {
                 employeeData.addEmployee(newEmployee);
                 Toast t = Toast.makeText(AddUpdateEmployee.this, "Employee "
-                        + newEmployee.getFirstname() + "has been added successfully !", Toast.LENGTH_SHORT);
+                        + newEmployee.getFirstname() + " has been added successfully !", Toast.LENGTH_SHORT);
                 t.show();
                 Intent i = new Intent(AddUpdateEmployee.this, MainActivity.class);
                 startActivity(i);

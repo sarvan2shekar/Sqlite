@@ -77,11 +77,11 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Emp Id:" + getEmpId() + "\n" +
-                "First Name:" + getFirstname() + "\n" +
-                "Last Name:" + getLastname() + "\n" +
-                "Gender:" + getGender() + "\n" +
-                "Hire Date:" + getHiredate() + "\n" +
-                "Dept=" + getDept();
+        return "First Name: " + getFirstname() + "\n" +
+                "Last Name: " + getLastname() + "\n" +
+                "Gender: " + getGender() + "\n" +
+                "Dept: " + getDept() + "\n" +
+                "Hire Date: " + getHiredate() + "\n" +
+                "Emp Id: " + getEmpId();
     }
 }
